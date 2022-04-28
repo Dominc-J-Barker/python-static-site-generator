@@ -14,7 +14,7 @@ class Site:
         """Make the site build directory."""
 
         directory = self.dest / path.relative_to(self.source)
-        path.mkdir(directory, parents=True, exist_ok=True)
+        directory.mkdir(parents=True, exist_ok=True)
 
     def build(self):
         """Make the output build directory."""
