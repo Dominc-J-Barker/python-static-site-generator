@@ -13,7 +13,7 @@ class Site:
     def create_dir(self, path):
         """Make the site build directory."""
 
-        directory = self.dest / Path.relative_to(path, self.source)
+        directory = self.dest / path.relative_to(self.source)
         Path.mkdir(directory, parents=True, exist_ok=True)
 
     def build(self):
