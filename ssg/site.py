@@ -19,7 +19,7 @@ class Site:
     def build(self):
         """Make the output build directory."""
 
-        Path.mkdir(self._dest, parents=True, exist_ok=True)
+        Path.mkdir(self.dest, parents=True, exist_ok=True)
         for path in self.source.rglob('*'):
             if Path.is_dir(path):
                 self.create_dir(path)
