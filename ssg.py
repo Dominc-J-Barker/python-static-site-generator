@@ -5,8 +5,6 @@ def main(source="content", dest="dist"):
     """Build the static site"""
 
     config = {"source":source, "dest":dest}
-
-    site = Site(**config)
-    site.build()
+    Site(**config).build()
 
 typer.run(main)
