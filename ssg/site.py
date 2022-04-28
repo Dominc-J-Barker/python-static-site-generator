@@ -14,12 +14,12 @@ class Site:
         """Make the site build directory."""
 
         directory = self.dest / path.relative_to(self.source)
-        Path.mkdir(directory, parents=True, exist_ok=True)
+        path.mkdir(directory, parents=True, exist_ok=True)
 
     def build(self):
         """Make the output build directory."""
 
-        Path.mkdir(self.dest, parents=True, exist_ok=True)
+        self.dest.mkdir(parents=True, exist_ok=True)
         for path in self.source.rglob('*'):
-            if Path.is_dir(path):
+            if path.is_dir():
                 self.create_dir(path)
