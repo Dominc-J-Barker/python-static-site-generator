@@ -7,19 +7,19 @@ class Site:
     """Site class to configure the site and setup the root file structure."""
     def __init__(self, source:str, dest:str):
 
-        self._source = Path(source)
-        self._dest = Path(dest)
+        self.source = Path(source)
+        self.dest = Path(dest)
 
     def create_dir(self, path):
         """Make the site build directory."""
 
-        directory = self._dest / Path.relative_to(path, self._source)
+        directory = self.dest / Path.relative_to(path, self.source)
         Path.mkdir(directory, parents=True, exist_ok=True)
 
     def build(self):
         """Make the output build directory."""
 
         Path.mkdir(self._dest, parents=True, exist_ok=True)
-        for path in self._source.rglob('*'):
+        for path in self.source.rglob('*'):
             if Path.is_dir(path):
                 self.create_dir(path)
