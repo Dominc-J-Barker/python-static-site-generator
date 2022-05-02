@@ -2,6 +2,7 @@
 """Site class to configure the site and setup the root file structure."""
 
 from pathlib import Path
+import sys
 
 class Site:
     """Site class to configure the site and setup the root file structure."""
@@ -27,7 +28,7 @@ class Site:
         if parser is not None:
             parser.parse(path, self.source, self.dest)
         else:
-            print("Not implemented")
+            self.error("No parser for the {} extension, file skipped!".format(path.suffix))
 
     def build(self):
         """Make the output build directory."""
@@ -38,3 +39,7 @@ class Site:
                 self.create_dir(path)
             elif path.is_file():
                 self.run_parser(path)
+
+    @staticmethod
+    def error(message):
+        sys.stderr.write("\x1b[1;31m{}\n".format(message))

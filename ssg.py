@@ -8,7 +8,13 @@ import ssg.parsers
 def main(source="content", dest="dist"):
     """Build the static site"""
 
-    config = {"source":source, "dest":dest, "parsers":[ssg.parsers.ResourceParser()]}
+    config = {"source":source,
+        "dest":dest, 
+        "parsers":[
+            ssg.parsers.ResourceParser(),
+            ssg.parsers.MarkdownParser(),
+            ssg.parsers.ReStructuredText()
+        ]}
 
     Site(**config).build()
 
