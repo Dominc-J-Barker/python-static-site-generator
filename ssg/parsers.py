@@ -13,8 +13,8 @@ class Parser:
         raise NotImplementedError
 
     def read(self, path:Path):
-        with open(path, 'rt', encoding='utf-8') as filehandle:
-            return filehandle.read()
+        with open(path, 'rt', encoding='utf-8') as file:
+            return file.read()
 
     def write(self, path, dest, content, ext='.html'):
         full_path = dest / path.with_suffix(ext).name
